@@ -1,0 +1,20 @@
+package ContaBancaria;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        ContaBancaria conta = new ContaBancaria(1000);
+
+        try {
+            // Saque válido
+            conta.sacar(300);
+
+            // Saque maior que o saldo
+            conta.sacar(800);
+
+        } catch (SaldoInsuficienteException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+}
