@@ -1,0 +1,99 @@
+package exercicioscolecoes;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+public class GerenciadorCupons {
+
+    public static void main(String[] args) {
+
+        // ==========================================
+        // conjunto de cupons
+        // ==========================================
+
+        Set<CupomDesconto> conjuntoCupons = new HashSet<>();
+
+        CupomDesconto cupom1 =
+                new CupomDesconto("DESCONTO10", 10);
+
+        CupomDesconto cupom2 =
+                new CupomDesconto("DESCONTO20", 20);
+
+        // mesmo código do cupom1
+        CupomDesconto cupom3 =
+                new CupomDesconto("DESCONTO10", 30);
+
+        boolean resultado1 = conjuntoCupons.add(cupom1);
+        boolean resultado2 = conjuntoCupons.add(cupom2);
+        boolean resultado3 = conjuntoCupons.add(cupom3);
+
+        System.out.println("Cupom 1 adicionado: " + resultado1);
+        System.out.println("Cupom 2 adicionado: " + resultado2);
+        System.out.println("Cupom 3 adicionado: " + resultado3);
+
+        System.out.println("\nCupons cadastrados:");
+
+        for (CupomDesconto cupom : conjuntoCupons) {
+            System.out.println(
+                    cupom.getCodigo() + " - "
+                    + cupom.getPorcentagem() + "%"
+            );
+        }
+
+
+        // ==========================================
+        // cupom com porcentagem zero
+        // ==========================================
+
+        CupomDesconto cupomZero =
+                new CupomDesconto("SEM_DESCONTO", 0);
+
+        conjuntoCupons.add(cupomZero);
+
+        System.out.println("\nAntes da limpeza:");
+
+        for (CupomDesconto cupom : conjuntoCupons) {
+            System.out.println(
+                    cupom.getCodigo() + " - "
+                    + cupom.getPorcentagem() + "%"
+            );
+        }
+
+
+        // ==========================================
+        // limpeza utilizando iterador
+        // ==========================================
+
+        limparCupons(conjuntoCupons);
+
+        System.out.println("\nDepois da limpeza:");
+
+        for (CupomDesconto cupom : conjuntoCupons) {
+            System.out.println(
+                    cupom.getCodigo() + " - "
+                    + cupom.getPorcentagem() + "%"
+            );
+        }
+    }
+
+
+    // método de limpeza dos cupons com porcentagem zero
+    public static void limparCupons(
+            Set<CupomDesconto> conjuntoCupons) {
+
+        Iterator<CupomDesconto> it =
+                conjuntoCupons.iterator();
+
+        while (it.hasNext()) {
+
+            CupomDesconto cupom = it.next();
+
+            if (cupom.getPorcentagem() == 0) {
+
+                // remoção segura durante a iteração
+                it.remove();
+            }
+        }
+    }
+}
