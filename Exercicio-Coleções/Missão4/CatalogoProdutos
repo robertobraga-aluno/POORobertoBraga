@@ -1,0 +1,59 @@
+package exercicioscolecoes;
+
+import java.util.TreeSet;
+
+public class CatalogoProdutos {
+
+    public static void main(String[] args) {
+
+        // ==========================================
+        // ordenação natural - por nome
+        // ==========================================
+
+        TreeSet<Produto> catalogoNatural =
+                new TreeSet<>();
+
+        Produto produto1 =
+                new Produto("Teclado", 150.00);
+
+        Produto produto2 =
+                new Produto("Mouse", 80.00);
+
+        Produto produto3 =
+                new Produto("Monitor", 900.00);
+
+        Produto produto4 =
+                new Produto("Notebook", 3500.00);
+
+        // adicionando produtos fora de ordem
+        catalogoNatural.add(produto1);
+        catalogoNatural.add(produto2);
+        catalogoNatural.add(produto3);
+        catalogoNatural.add(produto4);
+
+        System.out.println("Catálogo em ordem alfabética:");
+
+        for (Produto produto : catalogoNatural) {
+            System.out.println(produto);
+        }
+
+
+        // ==========================================
+        // ordenação customizada - por preço
+        // ==========================================
+
+        TreeSet<Produto> catalogoPreco =
+                new TreeSet<>(new ComparadorPorPreco());
+
+        catalogoPreco.add(produto1);
+        catalogoPreco.add(produto2);
+        catalogoPreco.add(produto3);
+        catalogoPreco.add(produto4);
+
+        System.out.println("\nCatálogo em ordem de preço:");
+
+        for (Produto produto : catalogoPreco) {
+            System.out.println(produto);
+        }
+    }
+}
