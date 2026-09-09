@@ -1,0 +1,6 @@
+package exercicioscolecoes;
+
+public interface Rastreavel {
+
+    String getStatusRastreio();
+}
