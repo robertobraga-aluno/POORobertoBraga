@@ -1,0 +1,9 @@
+package exercicioscolecoes;
+
+public class EntregaExpressa implements Rastreavel {
+
+    @Override
+    public String getStatusRastreio() {
+        return "Entrega expressa em processamento.";
+    }
+}
