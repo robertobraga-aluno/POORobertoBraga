@@ -1,0 +1,78 @@
+package exercicioscolecoes;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+public class ControleEstoque {
+
+    public static void main(String[] args) {
+
+        // ==========================================
+        // mapa de estoque
+        // ==========================================
+
+        Map<String, Produto> mapaEstoque = new HashMap<>();
+
+        // cadastro dos produtos utilizando put()
+        Produto produto1 = new Produto("Teclado", 150.00);
+        Produto produto2 = new Produto("Mouse", 80.00);
+        Produto produto3 = new Produto("Monitor", 900.00);
+        Produto produto4 = new Produto("Notebook", 3500.00);
+
+        mapaEstoque.put("P001", produto1);
+        mapaEstoque.put("P002", produto2);
+        mapaEstoque.put("P003", produto3);
+        mapaEstoque.put("P004", produto4);
+
+
+        // ==========================================
+        // consulta pelo codigo
+        // ==========================================
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o código do produto: ");
+        String codigo = scanner.nextLine();
+
+        // consulta direta utilizando get(), sem laço
+        Produto produto = mapaEstoque.get(codigo);
+
+        if (produto != null) {
+            System.out.println("Produto encontrado:");
+            System.out.println(produto);
+        } else {
+            System.out.println("Produto não encontrado.");
+        }
+
+
+        // ==========================================
+        // exibição das chaves
+        // ==========================================
+
+        Set<String> chaves = mapaEstoque.keySet();
+
+        System.out.println("\nCódigos cadastrados:");
+
+        for (String chave : chaves) {
+            System.out.println(chave);
+        }
+
+
+        // ==========================================
+        // exibição dos produtos
+        // ==========================================
+
+        Collection<Produto> produtos = mapaEstoque.values();
+
+        System.out.println("\nProdutos armazenados:");
+
+        for (Produto item : produtos) {
+            System.out.println(item);
+        }
+
+        scanner.close();
+    }
+}
