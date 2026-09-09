@@ -1,0 +1,65 @@
+package exercicioscolecoes;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
+
+public class GerenciadorPedidos {
+
+    public static void main(String[] args) {
+
+        // ==========================================
+        // fila de pedidos pendentes
+        // ==========================================
+
+        List<String> fila = new LinkedList<>();
+
+        /*
+         * a linkedList apresenta desempenho superior ao
+         * arrayList em inserções frequentes no início da lista,
+         * pois não precisa deslocar os demais elementos.
+         */
+
+        fila.add("Pedido 001");
+        fila.add("Pedido 002");
+        fila.add("Pedido 003");
+
+        // inserção no início
+        ((LinkedList<String>) fila).addFirst("Pedido 000");
+
+        // inserção no final
+        ((LinkedList<String>) fila).addLast("Pedido 004");
+
+        System.out.println("Fila de pedidos:");
+
+        for (String pedido : fila) {
+            System.out.println(pedido);
+        }
+
+
+        // ==========================================
+        // registrador de eventos com vector
+        // ==========================================
+
+        Vector<String> eventos = new Vector<>();
+
+        eventos.add("Pedido criado");
+        eventos.add("Pagamento realizado");
+        eventos.add("Pedido separado");
+        eventos.add("Pedido enviado");
+
+        System.out.println("\nRegistro de eventos:");
+
+        for (String evento : eventos) {
+            System.out.println(evento);
+        }
+
+        /*
+         * o Vector possui métodos synchronized, oferecendo
+         * segurança para operações individuais em ambientes
+         * multithread.
+         *
+         * o arrayList não possui sincronização automática.
+         */
+    }
+}
