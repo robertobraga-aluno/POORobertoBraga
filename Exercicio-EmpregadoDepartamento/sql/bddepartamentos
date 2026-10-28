@@ -1,0 +1,17 @@
+CREATE TABLE departamento (
+    sigla    VARCHAR(10)  PRIMARY KEY,
+    nome     VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE empregado (
+    cpf                VARCHAR(11)  PRIMARY KEY,
+    nome               VARCHAR(100) NOT NULL,
+    departamento_sigla VARCHAR(10)  NOT NULL,
+    CONSTRAINT fk_empregado_departamento
+        FOREIGN KEY (departamento_sigla) REFERENCES departamento (sigla)
+);
+
+ALTER TABLE departamento
+    ADD COLUMN gerente_cpf VARCHAR(11),
+    ADD CONSTRAINT fk_departamento_gerente
+        FOREIGN KEY (gerente_cpf) REFERENCES empregado (cpf);
